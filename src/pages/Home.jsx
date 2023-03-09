@@ -46,14 +46,16 @@ export const Home = () => {
     };
 
     return (
-        <div className={css.container}>
-            <h1 className={css.title}>Trending today</h1>
-            {isLoading && <Loader />}
-            <MovieGallery movies={movies} />
-            {isVissible && (<Button disabled={isLoading} onLoadMoreButton={loadMoreButton}>
-              {isLoading ? 'Loading...' : 'Load more'}
-            </Button>)}
-            <ToastContainer autoClose={3000}/>
-        </div>
+        <main>
+            <div className={css.container}>
+                <h1 className={css.title}>Trending today</h1>
+                {isLoading && <Loader />}
+                <MovieGallery movies={movies} />
+                {isVissible && (<Button disabled={isLoading} onLoadMoreButton={loadMoreButton}>
+                {isLoading ? 'Loading...' : 'Load more'}
+                </Button>)}
+                <ToastContainer autoClose={3000}/>
+            </div>
+        </main>
     )
 }
