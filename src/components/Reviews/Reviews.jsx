@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
-import { getMovieDetails } from "services/moviesApi";
+import { useParams } from "react-router-dom";
+import { getReviewsDetails } from "services/moviesApi";
 import { Loader } from 'components/Loader/Loader';
-import { MovieInfo } from "components/MovieInfo/MovieInfo";
+import { ReviewsInfo } from "components/ReviewsInfo/ReviewsInfo";
 
-export const MovieDetails = () => {
-
+export const Reviews = () => {
+    
   const { movieId } = useParams();
-  const [movie, setMovie] = useState({});
+  const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState(false);
 
 
   useEffect(() => {
-      const getMovie = async () => {
+      const getReviews = async () => {
       setIsLoading(true);
 
       try {
-        const data = await getMovieDetails(movieId);
-
-        setMovie(data);
+          const { results } = await getReviewsDetails(movieId);
+        setReviews(results);
           
       } catch (error) {
       setError(error.message);
@@ -30,15 +29,13 @@ export const MovieDetails = () => {
       }
       }
   
-      getMovie();
+      getReviews();
   }, [movieId, setError])
 
     return (
           <>
               {isLoading && <Loader />}
-              {movie && <MovieInfo {...movie} />}
-        
-              <Outlet />
+              {reviews && <ReviewsInfo reviews={reviews} />}
           </>
     )
 }

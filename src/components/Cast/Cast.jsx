@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
-import { getMovieDetails } from "services/moviesApi";
+import { useParams } from "react-router-dom";
+import { getCastDetails } from "services/moviesApi";
 import { Loader } from 'components/Loader/Loader';
-import { MovieInfo } from "components/MovieInfo/MovieInfo";
+import { CastInfo } from "components/CastInfo/CastInfo";
 
-export const MovieDetails = () => {
+
+export const Cast = () => {
 
   const { movieId } = useParams();
-  const [movie, setMovie] = useState({});
+  const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState(false);
 
 
   useEffect(() => {
-      const getMovie = async () => {
+      const getCast = async () => {
       setIsLoading(true);
 
       try {
-        const data = await getMovieDetails(movieId);
-
-        setMovie(data);
+          const { cast } = await getCastDetails(movieId);
+        setCast(cast);
           
       } catch (error) {
       setError(error.message);
@@ -30,15 +30,13 @@ export const MovieDetails = () => {
       }
       }
   
-      getMovie();
+      getCast();
   }, [movieId, setError])
 
     return (
           <>
               {isLoading && <Loader />}
-              {movie && <MovieInfo {...movie} />}
-        
-              <Outlet />
+              {cast && <CastInfo cast={cast} />}
           </>
     )
 }

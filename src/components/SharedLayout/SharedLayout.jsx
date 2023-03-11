@@ -4,13 +4,15 @@ import css from "./SharedLayout.module.css";
 export const SharedLayout = () => {
     return (
         <div>
-            <header>
-                <nav className={css.header__nav}>
+            <header className={css.header__nav}>
+                <nav>
                     <NavLink to="/" className={({ isActive }) => `${isActive && css.active} ${css.header__navLink}`}> Home </NavLink>
                     <NavLink to="/movies" className={({ isActive }) => `${isActive && css.active} ${css.header__navLink}`}>Movies</NavLink>
                 </nav>
             </header>
-            <Outlet />
+            <main className={css.container}>
+                <Outlet />
+            </main>        
         </div>
     )
 }

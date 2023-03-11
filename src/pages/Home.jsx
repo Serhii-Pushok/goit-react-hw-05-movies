@@ -46,7 +46,6 @@ export const Home = () => {
     };
 
     return (
-        <main>
             <div className={css.container}>
                 <h1 className={css.title}>Trending today</h1>
                 {isLoading && <Loader />}
@@ -56,6 +55,5 @@ export const Home = () => {
                 </Button>)}
                 <ToastContainer autoClose={3000}/>
             </div>
-        </main>
     )
 }
