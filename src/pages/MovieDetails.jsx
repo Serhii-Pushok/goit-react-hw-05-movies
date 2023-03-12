@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { getMovieDetails } from "services/moviesApi";
 import { Loader } from 'components/Loader/Loader';
 import { MovieInfo } from "components/MovieInfo/MovieInfo";
+import { GoBackBtn } from "components/GoBackBtn/GoBackBtn";
 
 export const MovieDetails = () => {
 
@@ -10,6 +11,9 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState(false);
+
+  const location = useLocation();
+
 
 
   useEffect(() => {
@@ -35,10 +39,13 @@ export const MovieDetails = () => {
 
     return (
           <>
-              {isLoading && <Loader />}
-              {movie && <MovieInfo {...movie} />}
+            {isLoading && <Loader />}
         
-              <Outlet />
+            <GoBackBtn path={location?.state?.from ?? "/"}/>
+      
+            {movie && <MovieInfo {...movie} />}
+      
+            <Outlet />
           </>
     )
 }

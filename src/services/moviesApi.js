@@ -20,7 +20,7 @@ export const getReviewsDetails = async (movie_id) => {
     return data;
 }
 
- export const getSearchMovies = (query) => {
-    const {data} = `https://api.themoviedb.org/3/search/movie?api_key=8866ad978ef0d3b2cbeacd8a73295f85&query=${query}`;
+ export const getSearchMovies = async (query, page=1) => {
+     const { data } = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=8866ad978ef0d3b2cbeacd8a73295f85&query=${query}&page=${page}`);
     return data;
   }

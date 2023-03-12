@@ -9,6 +9,6 @@ export const ReviewsInfo = ({ reviews }) => {
                 {reviews.length > 0 && reviews.map(review => (
                     <ReviewsItem key={review.id} {...review} />
                 ))}
-            </ul>  
+            </ul> 
     )
 }

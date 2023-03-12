@@ -16,7 +16,7 @@ MovieGallery.propTypes = {
     movies: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
-            poster_path: PropTypes.string.isRequired,
+            poster_path: PropTypes.string,
             original_title: PropTypes.string.isRequired,
         })
     )

@@ -8,7 +8,7 @@ export const SearchForm = ({onSubmit}) => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleChangeMovie = event => {
-        setSearchQuery(event.target.value.toLowerCase());
+        setSearchQuery(event.currentTarget.value.toLowerCase());
     }
 
     const handleSubmit = event => {

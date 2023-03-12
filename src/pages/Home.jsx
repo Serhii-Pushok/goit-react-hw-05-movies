@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import Notiflix from 'notiflix';
 import { getTrendingMovies } from "services/moviesApi";
 import { Loader } from 'components/Loader/Loader';
 import { Button } from "components/Button/Button";
@@ -23,7 +23,7 @@ export const Home = () => {
 
             if (page > Math.ceil(total_results / 20)) {
                 setIsVissible(false)
-                return toast.warn("We're sorry, but you've reached the end of search results.");
+                return Notiflix.Notify.warning("We're sorry, but you've reached the end of search results.");
             };
             
             setMovies(prevState => [...prevState, ...results]);
@@ -53,7 +53,6 @@ export const Home = () => {
                 {isVissible && (<Button disabled={isLoading} onLoadMoreButton={loadMoreButton}>
                 {isLoading ? 'Loading...' : 'Load more'}
                 </Button>)}
-                <ToastContainer autoClose={3000}/>
             </div>
     )
 }

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import css from "./MovieInfo.module.css";
 
 export const MovieInfo = ({poster_path, original_title, overview, vote_average, genres = [], release_date }) => {
@@ -13,6 +13,7 @@ export const MovieInfo = ({poster_path, original_title, overview, vote_average, 
 
     const voteAverage = ((Number(vote_average).toFixed(1)) * 10) + '%';
     const movieGenres = genres.map(genre => genre.name).join(', ');
+    const location = useLocation();
 
     return (
         <div className={css.movieInfo}>
@@ -31,10 +32,10 @@ export const MovieInfo = ({poster_path, original_title, overview, vote_average, 
                 <h2 className={css.title}>Additional information</h2>
                 <ul className={css.additionalInformationList}>
                     <li>
-                        <NavLink to="cast" className={({ isActive }) => `${isActive && css.active} ${css.additionalInformationLink}`}>Cast</NavLink>
+                        <NavLink to="cast" state={{from: location.state?.from ?? '/movies'}} className={({ isActive }) => `${isActive && css.active} ${css.additionalInformationLink}`}>Cast</NavLink>
                     </li>
                     <li>
-                        <NavLink to="reviews" className={({ isActive }) => `${isActive && css.active} ${css.additionalInformationLink}`}>Reviews</NavLink>
+                        <NavLink to="reviews" state={{from: location.state?.from ?? '/movies'}} className={({ isActive }) => `${isActive && css.active} ${css.additionalInformationLink}`}>Reviews</NavLink>
                     </li>
                 </ul>
             </div>
