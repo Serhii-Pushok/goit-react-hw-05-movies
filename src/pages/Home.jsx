@@ -6,7 +6,7 @@ import { Button } from "components/Button/Button";
 import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 import css from './Home.module.css';
 
-export const Home = () => {
+const Home = () => {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
@@ -56,3 +56,5 @@ export const Home = () => {
             </div>
     )
 }
+
+export default Home;

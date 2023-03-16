@@ -5,7 +5,7 @@ import { Loader } from 'components/Loader/Loader';
 import { CastInfo } from "components/CastInfo/CastInfo";
 
 
-export const Cast = () => {
+const Cast = () => {
 
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
@@ -40,3 +40,5 @@ export const Cast = () => {
           </>
     )
 }
+
+export default Cast;

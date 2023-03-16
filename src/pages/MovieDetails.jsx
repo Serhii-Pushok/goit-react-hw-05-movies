@@ -5,7 +5,7 @@ import { Loader } from 'components/Loader/Loader';
 import { MovieInfo } from "components/MovieInfo/MovieInfo";
 import { GoBackBtn } from "components/GoBackBtn/GoBackBtn";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
 
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
@@ -49,3 +49,5 @@ export const MovieDetails = () => {
           </>
     )
 }
+
+export default MovieDetails;

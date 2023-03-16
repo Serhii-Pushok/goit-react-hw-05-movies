@@ -1,10 +1,16 @@
 import { NavLink, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
+import foto from '../../images/poster-not-found-main.jpg';
 import css from "./MovieInfo.module.css";
 
 export const MovieInfo = ({poster_path, original_title, overview, vote_average, genres = [], release_date }) => {
     const baseUrl = 'https://image.tmdb.org/t/p/';
     const fileSize = 'w500';
-    const URI = `${baseUrl}${fileSize}${poster_path}`;
+    let URI = `${baseUrl}${fileSize}${poster_path}`;
+
+    if (poster_path === null || poster_path === undefined) {
+        URI = foto;
+    }
 
     let date = new Date(release_date).getFullYear();
     if (Number.isNaN(Number(date))) {
@@ -41,4 +47,15 @@ export const MovieInfo = ({poster_path, original_title, overview, vote_average, 
             </div>
         </div>
     )
+}
+
+
+
+MovieInfo.propTypes = {
+    poster_path: PropTypes.string,
+    original_title: PropTypes.string,
+    overview: PropTypes.string,
+    vote_average: PropTypes.number,
+    genres: PropTypes.array,
+    release_date: PropTypes.string
 }

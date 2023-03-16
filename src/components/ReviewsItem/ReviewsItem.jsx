@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import css from "./ReviewsItem.module.css";
 
 export const ReviewsItem = ({ author, content }) => {
@@ -8,4 +9,10 @@ export const ReviewsItem = ({ author, content }) => {
                 <p className={css.text}>{content}</p>
             </li>
     )
+}
+
+
+ReviewsItem.propTypes = {
+    author: PropTypes.string,
+    content: PropTypes.string
 }

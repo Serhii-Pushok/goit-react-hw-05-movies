@@ -8,7 +8,7 @@ import { MovieGallery } from "components/MovieGallery/MovieGallery";
 import { Button } from "components/Button/Button";
 import css from "./Movies.module.css";
 
-export const Movies = () => {
+const Movies = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchMovies, setSearchMovies] = useState([]);
@@ -81,3 +81,5 @@ export const Movies = () => {
           </div>
     )
 }
+
+export default Movies;

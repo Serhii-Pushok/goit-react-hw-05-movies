@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { CastItem } from "components/CastItem/CastItem";
 import css from "./CastInfo.module.css";
 
@@ -11,5 +12,13 @@ export const CastInfo = ({ cast }) => {
                 ))}
             </ul>  
     )
+}
+
+CastInfo.propTypes = {
+    cast: PropTypes.arrayOf(
+    PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        item: PropTypes.string,
+    }))
 }
 

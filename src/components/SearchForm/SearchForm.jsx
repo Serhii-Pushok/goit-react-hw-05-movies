@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { toast } from 'react-toastify';
+import Notiflix from 'notiflix';
+import PropTypes from "prop-types";
 import css from './SearchForm.module.css';
 
 export const SearchForm = ({onSubmit}) => {
@@ -15,7 +16,7 @@ export const SearchForm = ({onSubmit}) => {
         event.preventDefault();
 
         if (searchQuery.trim() === '') {
-           return toast.warn('Enter a query');
+           return Notiflix.Notify.warning('Enter a query');
         }
 
         onSubmit(searchQuery);
@@ -40,4 +41,9 @@ export const SearchForm = ({onSubmit}) => {
                     />
                 </form>
         )
+}
+
+
+SearchForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired
 }
